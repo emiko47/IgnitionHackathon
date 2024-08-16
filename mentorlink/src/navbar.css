@@ -1,0 +1,102 @@
+.navbar{
+    background-color: #2F3441;
+    position: fixed;
+    right: 0;
+    left: 0;
+    z-index: 1000;
+    padding: 7px;
+}
+
+
+
+
+.logo{
+    float: left;
+    display: flex;
+    padding: 14px 10px;
+    font-size: 2rem;
+    color: white;
+}
+
+/*actually makes the navbar look like a navbar*/
+.navbar_list{
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    float: right;
+    
+}
+
+.navbar_item{
+    display:flex;
+    align-items: center;
+    padding-top: 10px;
+    
+    
+
+}
+
+.navbar_link{
+    
+    display: block;
+    font-size: 1.2rem;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 1.4rem;
+    color: white;
+}
+
+.navbar_link:hover{
+    background-color: #0056b3;
+    transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+
+.dashboard_card {
+    position: absolute;
+    top: 100%; /* Position below the navbar */
+    right: 0;
+    background-color: #2F3441;
+    padding: 10px;
+    
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+    /* Spacing between the navbar and the card */
+    width: 400px; /* Adjust width as needed */
+    animation: slide-down 0.3s ease-out;
+  }
+  
+
+  @keyframes slide-down {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .dashboard_card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border: solid;
+  }
+  
+  .dashboard_card li {
+    margin: 10px 0;
+    border-bottom: dashed;
+    
+  }
+  
+  .dashboard_card a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  .dashboard_card a:hover {
+    text-decoration: underline;
+  }
