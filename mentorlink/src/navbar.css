@@ -48,8 +48,14 @@
 }
 
 .navbar_link:hover{
-    background-color: #0056b3;
+    color: #00acc1;
     transform: scale(1.05); /* Slightly enlarge on hover */
+    transform: scale(1.05);
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.navbar_link.active {
+  color: #00acc1; /* The color of the active link */
 }
 
 
@@ -84,19 +90,30 @@
     padding: 0;
     margin: 0;
     border: solid;
+    font-size: 1.5rem;
+    height: 153px;
   }
   
   .dashboard_card li {
     margin: 10px 0;
     border-bottom: dashed;
+    text-decoration: none;
+    
     
   }
+
   
   .dashboard_card a {
     color: white;
     text-decoration: none;
+    display: inline-block;
+    
   }
   
   .dashboard_card a:hover {
-    text-decoration: underline;
+    color: #00acc1;
+    transform: scale(1.05);
+    transition: transform 0.3s ease, color 0.3s ease;
   }
+
+  

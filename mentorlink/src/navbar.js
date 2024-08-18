@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 //import {useNavigate} from 'react-router-dom';
 //import { isLoggedIn, removeUserSession } from './AuthServices';
 
@@ -18,7 +19,7 @@ const Navbar = () => {
 
                 <ul className='navbar_list'>
                     <li className="navbar_item">
-                        <Link to='/' className = 'navbar_link'>Home</Link>
+                        <Link to='/' className = 'navbar_link' > Home </Link>
                     </li>
 
                     <li className="navbar_item">
@@ -26,7 +27,7 @@ const Navbar = () => {
                     </li>
 
                     <li className="navbar_item">
-                        <Link to='/linkup' className = 'navbar_link'>Link-Up</Link>
+                        <NavLink to='/linkup' className = {({isActive}) => isActive ?  'navbar_link active' : 'navbar_link'}>Link-Up</NavLink>
                     </li>
 
                     <li className="navbar_item">
