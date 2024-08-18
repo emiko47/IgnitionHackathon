@@ -1,21 +1,20 @@
-import {  FormControl, FormLabel, Input, Button, Spacer, Textarea } from "@chakra-ui/react";
-import { Formik, Form, ErrorMessage, Field, } from "formik";
+import {  FormControl, FormLabel, Input, Button, Spacer, Textarea, Box } from "@chakra-ui/react";
+import { Formik, Form, ErrorMessage, Field} from "formik";
 
 import { Select } from "chakra-react-select";
-import {interestOptions, mentorOptions, levelOptions, categoryOptions, educationOptions} from "./data/data"
-
+import {interestOptions, levelOptions, industryOptions, roleOptions, skillOptions} from "./data/data"
+import { setUserSession } from './services/AuthServices';
 
 
 
 
 function RegisterFormTwo(props){
 
-    let userCategory = "";
+    let userSkills = [];
     let userRole = "";
-    let userEducation = "";
     let userYear = "";
     let userInterests = [];
-    const formFinalData = {};
+    let userIndustry = "";
    const SelectInterest = ()=>(
 
         <Select
@@ -29,6 +28,19 @@ function RegisterFormTwo(props){
         }}
     />
    );
+   const SelectSkills = ()=>(
+
+        <Select
+        isMulti
+        name="skills"
+        placeholder="Select your interests..."
+        variant="outline"
+        options={skillOptions}
+        onChange={(options)=>{
+            userSkills = options;
+        }}
+    />
+   );
    const SelectYear = ()=>(
 
         <Select name="year"
@@ -36,78 +48,79 @@ function RegisterFormTwo(props){
             variant="outline"
             options={levelOptions}
             onChange={(options)=>{
-                userYear = options;
+                userYear = options.label;
             }}
         />
    );
-   const SelectEducation = ()=>(
-
-        <Select name="education" 
-        placeholder="High School/ University"
-        variant="outline"
-        options={educationOptions}
-        onChange={(options)=>{
-            userEducation = options;
-        }}/>
-   
-   );
    const SelectRole = ()=>(
 
-        <Select name="mentor" 
+        <Select name="role" 
         placeholder="Mentor/Mentee"
         variant="outline"
-        options={mentorOptions}
+        options={roleOptions}
         onChange={(options)=>{
-            userRole = options;
+            userRole = options.label;
         }}/>
    );
-   const SelectCategory = ()=>(
+   const SelectIndustry = ()=>(
 
-    <Select name="category" 
+    <Select name="industry" 
     placeholder="Student/Professional"
     variant="outline"
-    options={categoryOptions}
+    options={industryOptions}
     onChange={(options)=>{
-        userCategory = options;
+        userIndustry = options.label;
     }}/>
    );
 
     return(
+    <Box
+    maxHeight={"100vh"}
+    overflowY={true}
+    >
+
+    
     <Formik
+    
     initialValues={props.data}
     onSubmit={(values, actions) =>{
-        console.log("first",values.year);
+        const parsedInterest =  userInterests.map(item => item.label);
+        const parsedSkills =  userSkills.map(item => item.label);
+
+        const parsedData = {
+          "email":values.email,
+          "password": values.password,
+          "name": values.fullName,
+          "username": values.username,
+          "bio": values.bio,
+          "industry": values.industry,
+          "interests": parsedInterest,
+          "major": values.major,
+          "img_src": values.profile_img,
+          "role": values.role,
+          "school": values.school,
+          "skills": parsedSkills,
+        }
         values.year = userYear;
         values.role = userRole;
-        values.education = userEducation;
-        values.category = userCategory;
+        values.skills = userSkills;
+        values.industry = userIndustry;
         values.interests = userInterests;
-        console.log("second",values.year);
-        props.next(values, true);
-        setTimeout(() => {
-            alert(JSON.stringify(values, null, 2))
-            console.log(values);
-            actions.setSubmitting(false)
-          }, 1000);
+        props.next(parsedData, true);
     }}>
 
     {
       (formProps) =>(
         <Form >
           <FormControl p={4}>
-            <FormLabel htmlFor="category">Category</FormLabel>
-            <Field name="category" as={SelectCategory}/>
-            <ErrorMessage name="category" />
-          </FormControl>
-          <FormControl p={4}>
             <FormLabel htmlFor="role">Are you signing up to be a Mentor or Mentee?</FormLabel>
             <Field name="role" as={SelectRole}/>
             <ErrorMessage name="role" />
           </FormControl>
           <FormControl p={4}>
-            <FormLabel htmlFor="education">Education</FormLabel>
-            <Field name="education" as={SelectEducation}/>
-            <ErrorMessage name="education" />
+            <FormLabel htmlFor="industry">Industry</FormLabel>
+            <Field name="industry" as={SelectIndustry}/>
+            <ErrorMessage name="category" />
           </FormControl>
           <FormControl p={4}>
             <FormLabel htmlFor="school">School</FormLabel>
@@ -130,10 +143,18 @@ function RegisterFormTwo(props){
             <ErrorMessage name="interests" />
             </FormControl>
           <FormControl p={4}>
+            <FormLabel>Skills </FormLabel>
+            <Field name="skills" as={SelectSkills}/>
+            <ErrorMessage name="skills" />
+            </FormControl>
+          <FormControl p={4}>
             <FormLabel htmlFor="bio">Bio</FormLabel>
             <Field as={Textarea} placeholder='Write a bio so people can relate with you... ' name="bio" type="textarea" />
-
             <ErrorMessage name="bio" />
+          </FormControl>
+          <FormControl p={4}>
+            <FormLabel htmlFor="profile_img">Profile photo</FormLabel>
+            <Field as={Textarea} placeholder='Write a bio so people can relate with you... ' name="profile_img" type="textarea" />
           </FormControl>
           
             <Button
@@ -149,7 +170,7 @@ function RegisterFormTwo(props){
             <Button
                 mt={4}
                 colorScheme='teal'
-                isLoading={formProps.isSubmitting}
+                // isLoading={formProps.isSubmitting}
                 type='submit'
             >
                 Finish
@@ -161,7 +182,7 @@ function RegisterFormTwo(props){
       
     }
   
-    </Formik>
+    </Formik></Box>
     );
 } 
 

@@ -30,13 +30,56 @@ export const interestOptions = [
 
 ];
 
-export const mentorOptions = [
+export const skillOptions = [
+    {value:"project_management", label:"Project Management"},
+    {value:"data_analysis", label:"Data Analysis"},
+    {value:"graphic_design", label:"Graphic Design"},
+    {value:"programming", label:"Programming"},
+    {value:"communication", label:"Communication"},
+    {value:"public_speaking", label:"Public Speaking"},
+    {value:"leadership", label:"Leadership"},
+    {value:"problem_solving", label:"Problem Solving"},
+    {value:"time_management", label:"Time Management"},
+    {value:"negotiation", label:"Negotiation"},
+    {value:"teamwork", label:"Teamwork"},
+    {value:"marketing", label:"Marketing"},
+    {value:"sales", label:"Sales"},
+    {value:"customer_service", label:"Customer Service"},
+    {value:"financial_planning", label:"Financial Planning"},
+    {value:"writing", label:"Writing"},
+    {value:"research", label:"Research"},
+    {value:"critical_thinking", label:"Critical Thinking"},
+    {value:"emotional_intelligence", label:"Emotional Intelligence"},
+    {value:"conflict_resolution", label:"Conflict Resolution"}
+
+];
+
+export const roleOptions = [
     {value:"mentor", label:"Mentor"},
     {value:"mentee", label:"Mentee"},
 ];
-export const categoryOptions = [
-    {value:"Student", label:"Student"},
-    {value:"Professional", label:"Professional"},
+export const industryOptions = [
+    {value:"technology", label:"Technology"},
+    {value:"finance", label:"Finance"},
+    {value:"healthcare", label:"Healthcare"},
+    {value:"education", label:"Education"},
+    {value:"marketing", label:"Marketing"},
+    {value:"legal", label:"Legal"},
+    {value:"engineering", label:"Engineering"},
+    {value:"real_estate", label:"Real Estate"},
+    {value:"consulting", label:"Consulting"},
+    {value:"retail", label:"Retail"},
+    {value:"hospitality", label:"Hospitality"},
+    {value:"entertainment", label:"Entertainment"},
+    {value:"nonprofit", label:"Nonprofit"},
+    {value:"manufacturing", label:"Manufacturing"},
+    {value:"logistics", label:"Logistics"},
+    {value:"media", label:"Media"},
+    {value:"construction", label:"Construction"},
+    {value:"pharmaceutical", label:"Pharmaceutical"},
+    {value:"automotive", label:"Automotive"},
+    {value:"energy", label:"Energy"}
+
 ]
 export const educationOptions = [
     {value:"highschool", label:"High School"},

@@ -4,9 +4,12 @@ import googleimg from './google.png';
 import githubimg from './github-mark.png';
 import  "./googleicon.css"
 import {Link} from 'react-router-dom';
+import { useState } from 'react';
+import Register from './Register';
 
 function Auth (){
 
+    const [showLogin,setShowLogin] = useState(true);
     const LoginArea = () =>{
          return(
             <Box p={4} mx={'auto'} >
@@ -92,9 +95,15 @@ function Auth (){
                 <Text p={4}>
                     Whether you're a seasoned professional looking to mentor students or a student looking for a mentor, you have a match here. Start your journey here. 
                 </Text>
-                <Button mt={2}>
-                <a href="/Register"><h2>Register</h2></a>
+                <Text size={'2xl'}>New here?</Text>
+                <Button mt={2} type='button' onClick={()=>{setShowLogin(false)}}>
+                    Register
                 </Button>
+                {showLogin? null : (
+                     <Button ml={5} mt={2} type='button' onClick={()=>{setShowLogin(true)}}>
+                        Login
+                    </Button>)
+                }
             </Box>  
             
         );
@@ -112,16 +121,29 @@ function Auth (){
                 </Box>
             </Flex>
             <Flex w={{lg:"55%", md:"40%", sm:"20%"}} h={{lg:"100vh", md:"100vh", sm:"100px"}} justifyContent={'center'} align={'center'}>
-                <Box borderWidth={3} 
-                    px={5}
+                {
+                    showLogin ?(
+                        <Box borderWidth={3} 
+                            px={5}
+                            width={'70%'}
+                            maxWidth={'100%'}
+                            borderRadius={7}
+                            textAlign={'center'}
+                            boxShadow={'lg'}
+                            my={'auto'}>
+                            { <LoginArea/>}
+                        </Box>
+                    ):
+                    <Box 
                     width={'70%'}
                     maxWidth={'100%'}
                     borderRadius={7}
                     textAlign={'center'}
-                    boxShadow={'lg'}
                     my={'auto'}>
-                    <LoginArea/>
-                </Box>
+                        <Register/>
+                    </Box>
+                }
+                
             </Flex>
             
         </Stack>
