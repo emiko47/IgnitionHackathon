@@ -1,16 +1,13 @@
 import {Field, Form, Formik} from 'formik';
-import {Button,FormControl,FormLabel,Input,FormErrorMessage} from '@chakra-ui/react'
+import {Button,FormControl,FormLabel,Input,} from '@chakra-ui/react'
 
 function Login(){
 
-    function validateName (){
-        
-    }
-
 
     return (
+      
         <Formik
-          initialValues={{ name: 'Sasuke' }}
+          initialValues={{ username: '', password:'' }}
           onSubmit={(values, actions) => {
             setTimeout(() => {
               alert(JSON.stringify(values, null, 2))
@@ -18,27 +15,28 @@ function Login(){
             }, 1000)
           }}
         >
-          {(props) => (
-            <Form>
-              <Field name='name' validate={validateName}>
-                {({ field, form }) => (
-                  <FormControl isInvalid={form.errors.name && form.touched.name}>
-                    <FormLabel>Username</FormLabel>
-                    <Input {...field} placeholder='name' />
-                    <FormErrorMessage>{form.errors.name}</FormErrorMessage>
-                  </FormControl>
-                )}
-              </Field>
-              <Button
-                mt={4}
-                colorScheme='teal'
-                isLoading={props.isSubmitting}
-                type='submit'
-              >
-                Sign In
-              </Button>
-            </Form>
-          )}
+          {
+      (props) =>(
+        <Form >
+          <FormControl p={4}>
+            <FormLabel htmlFor="username">Username</FormLabel>
+            <Field as={Input} name="username" type="text" />
+          </FormControl>
+          <FormControl p={4}>
+            <FormLabel htmlFor="password">Password</FormLabel>
+            <Field as={Input} name="password" type="password" />
+          </FormControl>
+
+          <Button
+            mt={4}
+            colorScheme='teal'
+            isLoading={props.isSubmitting}
+            type='submit'
+          >
+            Sign In
+          </Button>
+          </Form>
+        )}
         </Formik>
     )
 }   
