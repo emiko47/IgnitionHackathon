@@ -1,0 +1,45 @@
+html{
+    background-color: #131720;
+}
+
+.search_container{
+    padding-top: 100px;
+    display: flex;
+    justify-content: center; /* Centers items horizontally */
+    align-items: center;     /* Centers items vertically (if needed) */
+    gap: 50px; 
+    
+}
+.search{
+    padding-top: 50px;
+    background-color: #131720;
+    
+}
+
+form {
+    display: flex;
+    background-color: white;
+    width: 330px;
+    height: 53px;
+    border-radius: 7px;    
+    overflow: hidden;
+    
+    
+}
+
+input {
+    
+    font-size: 16px; /* Fix the font-size syntax */
+    padding: 0 9px; /* Adjust padding for left/right */
+    width: 100%;
+    height: 100%;
+    border: none; /* Remove default border if any */
+    background: none; /* Remove default background if any */
+    
+    
+}
+
+input::placeholder{
+    color: #000;
+    
+}

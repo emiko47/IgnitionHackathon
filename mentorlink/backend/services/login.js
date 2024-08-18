@@ -27,7 +27,15 @@ async function login(user) {
     const userInfo = {
         username: dynamoUser.username,
         name: dynamoUser.name,
-        email: dynamoUser.email
+        email: dynamoUser.email,
+        industry: dynamoUser.industry,
+        bio: dynamoUser.bio,
+        interests: dynamoUser.interests,
+        major: dynamoUser.major,
+        profile_id: dynamoUser.profile_id,
+        img_src: dynamoUser.prof_img_src,
+        role: dynamoUser.role,
+        skills: dynamoUser.skills
     };
 //the generateToken function is used to 
     const token = generateToken(userInfo);// user info is passed using a Json web token (in generateToken). So the user Info will be encoded as a JSON object. 
